@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xiaoyue Yu - Portfolio</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Local fallback fonts instead of Google Fonts -->
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Local fallback fonts and all styles -->
     <style>
         @font-face {
             font-family: 'Lora';
@@ -57,10 +56,7 @@
             font-weight: 700;
             src: local('Nunito Sans Bold'), local('NunitoSans-Bold'), local('Arial Bold');
         }
-    </style>
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
+
         /* Reset and Base Styles */
         * {
             margin: 0;
@@ -215,50 +211,6 @@
             position: relative;
         }
         
-        /* Typewriter Effect */
-        .typewriter-text {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            position: relative;
-        }
-        
-        .typewriter-text::after {
-            content: '';
-            position: absolute;
-            right: 0; /* Adjusted for better alignment */
-            top: 0;
-            height: 100%;
-            width: 2px;
-            background-color: #B0E0E6;
-            animation: blink-caret 0.75s step-end infinite;
-        }
-        
-        .typewriter-text.typing-animation {
-            animation: typing-animation var(--typing-duration) steps(var(--steps), end) forwards;
-        }
-        
-        .typewriter-text.deleting-animation {
-            animation: deleting-animation var(--deleting-duration) steps(var(--steps), end) forwards;
-        }
-        
-        @keyframes typing-animation {
-            from { width: 0 }
-            to { width: var(--text-width) }
-        }
-        
-        @keyframes deleting-animation {
-            from { width: var(--text-width) }
-            to { width: 0 }
-        }
-        
-        /* --- THIS IS THE FIX --- */
-        /* Changed 'border-color' to 'background-color' to make the cursor blink */
-        @keyframes blink-caret {
-            from, to { background-color: transparent; }
-            50% { background-color: #B0E0E6; }
-        }
-        
         .avatar-container {
             text-align: center;
             margin-bottom: 1rem;
@@ -306,6 +258,24 @@
             transform: translateY(0);
         }
 
+        .home-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 2rem;
+        }
+
+        .home-left, .home-right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .home-right {
+            margin-left: 5rem;
+            align-items: flex-start;
+        }
+
         .name {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
@@ -313,14 +283,41 @@
         }
 
         .title {
-            font-size: 1.2rem;
-            color: #666;
+            font-size: 3.5rem;
+            color: #555;
             margin-bottom: 1.5rem;
-            text-align: center;
+            text-align: left;
             min-height: 2.5em; 
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
+            width: 100%;
+        }
+        
+        .typewriter-text {
+            position: relative;
+            white-space: normal;
+            word-break: break-word; 
+            min-height: 1em;
+            line-height: 1em;
+            display: inline-block;
+            font-family: "Fira Code", "Consolas", "Courier New", monospace;
+        }
+
+        .typewriter-text::after {
+            content: '';
+            display: inline-block;
+             width: 3px;
+             height: 1em;
+             margin-left: 2px;
+             background-color: #B0E0E6;
+             vertical-align: bottom;
+             animation: blink-caret 1s step-end infinite;
+        }
+
+        @keyframes blink-caret {
+            from, to { background-color: transparent; }
+            50% { background-color: #B0E0E6; }
         }
 
         .social-links {
@@ -370,6 +367,7 @@
         .publication-links {
             display: flex;
             gap: 1rem;
+            margin-top: 0.5rem;
         }
 
         .publication-links a {
@@ -471,51 +469,70 @@
             overflow: hidden;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
+            height: 320px;
+        }
+
+        .project-card-link {
+            text-decoration: none; 
+            color: inherit;
         }
 
         .project-card:hover {
             transform: translateY(-10px);
         }
 
+        .coming-soon {
+            position: relative;
+            pointer-events: none;
+        }
+        .coming-soon .project-img {
+            height: 100%;
+        }
+        .coming-soon::after {
+            content: "Coming Soon";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            opacity: 1;
+            border-radius: 8px;
+        }
+        
         .project-img {
             width: 100%;
-            height: 200px;
+            height: 66%;
             object-fit: cover;
         }
-
+        
         .project-info {
-            padding: 1.5rem;
+            /* UPDATED: Use Flexbox for centering */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            height: 34%;
         }
 
         .project-title {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            /* UPDATED: Larger font, centered text */
+            font-size: 1.5rem;
+            margin-bottom: 0;
+            padding: 0;
+            text-align: center;
         }
-
-        .project-tech {
+        
+        .project-description {
+            padding: 0;
             color: #666;
-            margin-bottom: 1rem;
             font-size: 0.9rem;
+            text-align: left;
+            word-break: break-word;
         }
 
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .project-links a {
-            padding: 0.5rem 1rem;
-            background-color: #B0E0E6;
-            color: #333333;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-
-        .project-links a:hover {
-            background-color: #87CEEB;
-        }
-
-        /* Blog Section */
         .blog-content {
             margin-top: 30px;
             background-color: #fff;
@@ -530,43 +547,6 @@
             line-height: 1.6;
             text-align: center;
             font-style: italic;
-        }
-
-        /* Lightbox */
-        .lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .lightbox.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .lightbox-img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 4px;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: #FFFFFF;
-            font-size: 2rem;
-            cursor: pointer;
         }
 
         /* Contact Section */
@@ -586,14 +566,74 @@
             font-weight: 600;
             color: #B0E0E6;
         }
+        
+        .contact-image {
+            margin-top: 0;
+            width: 100%;
+            display: block;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-img {
+            width: 100%;
+            height: auto;
+            border-radius: 0;
+            object-fit: cover;
+        }
+
+        .snowflake {
+             position: absolute;
+             color: #fff;
+             opacity: 0.9;
+             animation: fall 5s linear forwards, melt 2s linear 5s forwards;
+             pointer-events: none;
+             transform: translate(-50%, -50%);
+         }
+
+        @keyframes fall {
+            to { transform: translateY(100%); }
+        }
+
+        @keyframes melt {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 2rem 0;
-            border-top: 1px solid #eee;
+            padding: 0 0 2rem 0;
+            border-top: none;
             color: #666;
             font-size: 0.9rem;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            right: 2rem;
+            bottom: 2rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #B0E0E6;
+            color: #fff;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            border: none;
+            outline: none;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 1000;
+        }
+        .back-to-top:hover {
+            transform: translateY(-4px);
+            opacity: 0.9;
         }
 
         /* Responsive Design */
@@ -630,11 +670,9 @@
             .hamburger.active div:nth-child(1) {
                 transform: rotate(-45deg) translate(-5px, 6px);
             }
-
             .hamburger.active div:nth-child(2) {
                 opacity: 0;
             }
-
             .hamburger.active div:nth-child(3) {
                 transform: rotate(45deg) translate(-5px, -6px);
             }
@@ -645,6 +683,21 @@
             
             .home-content {
                 padding: 30px 0;
+            }
+            
+            .home-container {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .home-right {
+                align-items: center;
+                margin-left: 0;
+                text-align: center;
+            }
+            .title {
+                text-align: center;
+                justify-content: center;
+                font-size: 2.5rem;
             }
 
             .timeline::after {
@@ -670,28 +723,25 @@
                 left: 21px;
             }
 
-            .projects-grid,
-            .gallery-grid {
+            .projects-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
         }
 
         @media screen and (max-width: 480px) {
-            .profile-img {
-                height: 100vh;
-                width: 100%;
-            }
-
             .name {
                 font-size: 2rem;
+            }
+            
+            .title {
+                font-size: 2.0rem;
             }
             
             .home-content {
                 padding: 20px 0;
             }
 
-            .projects-grid,
-            .gallery-grid {
+            .projects-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -724,20 +774,23 @@
             <img src="photo_index.jpg" alt="Profile Photo">
         </div>
         <div class="home-content" id="home-content">
-            <div class="container">
-                <div class="avatar-container">
-                    <img src="photo_me.jpg" alt="Xiaoyue Yu" class="avatar">
+            <div class="container home-container">
+                <div class="home-left">
+                    <div class="avatar-container">
+                        <img src="photo_me.jpg" alt="Xiaoyue Yu" class="avatar">
+                    </div>
+                    <div class="social-links" style="justify-content: center; margin-top: 1.5rem;">
+                        <a href="mailto:XIY249@pitt.edu" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="#" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                        <a href="https://github.com/ParkNotpark" title="GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
                 </div>
-                <h1 class="name">Xiaoyue Yu</h1>
-                <div class="title">
-                    <span class="typewriter-text" id="typewriter"></span>
-                </div>
-
-                <div class="social-links" style="justify-content: center; margin-top: 1.5rem;">
-                    <a href="mailto:XIY249@pitt.edu" title="Email"><i class="fas fa-envelope"></i></a>
-                    <a href="#" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
-                    <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <div class="home-right">
+                    <h1 class="name">Xiaoyue Yu</h1>
+                    <div class="title">
+                        <span class="typewriter-text" id="typewriter"></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -798,17 +851,22 @@
     <section id="blog">
         <div class="container">
             <h2 class="section-title">Blog</h2>
-            <div class="blog-content">
-                <p>Coming soon...</p>
+            <div class="projects-grid">
+                <a href="blog-mount-siguniang.html" class="project-card-link">
+                    <div class="project-card">
+                        <img src="images/MountSiguniang_title.jpg" alt="Mount Siguniang" class="project-img">
+                        <div class="project-info">
+                            <h3 class="project-title">December 9, 2023 - Mount Siguniang</h3>
+                            <!-- REMOVED the description paragraph -->
+                        </div>
+                    </div>
+                </a>
+                <div class="project-card coming-soon">
+                    <img src="photo_index.jpg" alt="Coming Soon" class="project-img">
+                </div>
             </div>
         </div>
     </section>
-
-    <!-- Lightbox -->
-    <div class="lightbox">
-        <span class="lightbox-close">&times;</span>
-        <img src="" alt="Lightbox Image" class="lightbox-img">
-    </div>
 
     <!-- Contact Section -->
     <section id="contact">
@@ -824,12 +882,20 @@
         </div>
     </section>
 
+    <!-- Full-width Contact Image -->
+    <div class="contact-image">
+        <img src="photo_contact.JPG" alt="Contact photo" class="contact-img">
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2025 Xiaoyue Yu. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" title="Back to Top"><i class="fas fa-chevron-up"></i></button>
 
     <!-- JavaScript -->
     <script>
@@ -840,6 +906,7 @@
         const navLinksContainer = document.querySelector('.nav-links');
         const sections = document.querySelectorAll('section');
         const homeContent = document.getElementById('home-content');
+        const backToTopBtn = document.getElementById('backToTop');
 
         // Hamburger menu toggle
         hamburger.addEventListener('click', () => {
@@ -866,31 +933,38 @@
 
         // Function to handle scroll effects
         function handleScrollEffects() {
-            // Add shadow to navbar on scroll
+            // Navbar shadow
             if (window.scrollY > 50) {
                 navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
             } else {
                 navbar.style.boxShadow = 'none';
             }
 
-            // Highlight active section in navbar
+            // Back to top button visibility
+            if (window.scrollY > 300) {
+                if (backToTopBtn) backToTopBtn.style.display = 'flex';
+            } else {
+                if (backToTopBtn) backToTopBtn.style.display = 'none';
+            }
+            
+            // Section fade-in and nav link highlighting
             let current = '';
-
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 if (window.scrollY >= (sectionTop - 200)) {
                     current = section.getAttribute('id');
                 }
-                
                 if (isInViewport(section)) {
                     section.classList.add('visible');
                 }
             });
 
+            // Home content specific animation trigger
             if (homeContent && window.scrollY > 100) {
                 homeContent.classList.add('visible');
             }
 
+            // Update active nav link
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href').substring(1) === current) {
@@ -898,110 +972,109 @@
                 }
             });
         }
-
-        // Active link and section visibility on scroll
-        window.addEventListener('scroll', handleScrollEffects);
         
-        // Initialize sections visibility on page load
+        // Event Listeners
+        window.addEventListener('scroll', handleScrollEffects);
         window.addEventListener('load', () => {
-            const homeSection = document.getElementById('home');
-            if (homeSection) {
-                homeSection.classList.add('visible');
-            }
+            document.getElementById('home')?.classList.add('visible');
             handleScrollEffects();
-            
-            setTimeout(() => {
-                typewriterCycle();
-            }, 500);
+            setTimeout(typewriterCycle, 500);
         });
 
-        // =================================================================
-        // NEW AND IMPROVED TYPEWRITER ANIMATION FUNCTION (CORRECTED)
-        // =================================================================
+        // Back to Top button click
+        if (backToTopBtn) {
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // JavaScript-based Typewriter
         function typewriterCycle() {
             const typewriterElement = document.getElementById('typewriter');
             if (!typewriterElement) return;
 
             const texts = [
                 "SCUPIAN, IE person.",
-                "Comming to Pitt for INFSCI.",
+                "Coming to Pitt for INFSCI.",
                 "A cat lover.",
                 "Also a dog lover.",
                 "My spirit animal is a Beagle.",
-                " My actual pet is still loading..."
+                "My actual pet is still loading..."
             ];
             let textIndex = 0;
-
-            // 调整打字速度，使其更均匀
-            const typingSpeedMs = 80; // 减慢打字速度
-            const deletingSpeedMs = 50; // 减慢删除速度
+            let charIndex = 0;
+            let isDeleting = false;
+            
+            const typingSpeed = 100;
+            const deletingSpeed = 50;
             const pauseDuration = 2000;
 
-            // 创建一个临时元素来测量文本宽度
-            const measureElement = document.createElement('span');
-            measureElement.style.visibility = 'hidden';
-            measureElement.style.position = 'absolute';
-            measureElement.style.whiteSpace = 'nowrap';
-            measureElement.style.font = window.getComputedStyle(typewriterElement).font;
-            document.body.appendChild(measureElement);
-
-            function animate() {
+            function type() {
                 const currentText = texts[textIndex];
-                const textLength = currentText.length;
+                let timeoutSpeed = typingSpeed;
 
-                // 计算实际文本宽度
-                measureElement.textContent = currentText;
-                const textWidth = measureElement.offsetWidth;
+                if (isDeleting) {
+                    typewriterElement.textContent = currentText.substring(0, charIndex - 1);
+                    charIndex--;
+                    timeoutSpeed = deletingSpeed;
 
-                // 计算动画持续时间
-                const typingDuration = textLength * typingSpeedMs;
-                const deletingDuration = textLength * deletingSpeedMs;
+                    if (charIndex === 0) {
+                        isDeleting = false;
+                        textIndex = (textIndex + 1) % texts.length;
+                        timeoutSpeed = 500;
+                    }
+                } else {
+                    typewriterElement.textContent = currentText.substring(0, charIndex + 1);
+                    charIndex++;
 
-                // 设置初始内容为空
-                typewriterElement.textContent = '';
-                
-                // 设置CSS变量
-                typewriterElement.style.setProperty('--steps', textLength);
-                typewriterElement.style.setProperty('--text-width', `${textWidth}px`);
-                typewriterElement.style.setProperty('--typing-duration', `${typingDuration}ms`);
-                typewriterElement.style.setProperty('--deleting-duration', `${deletingDuration}ms`);
-                
-                // 清除之前的动画类以确保干净的开始
-                typewriterElement.classList.remove('deleting-animation', 'typing-animation');
+                    if (charIndex === currentText.length) {
+                        isDeleting = true;
+                        timeoutSpeed = pauseDuration;
+                    }
+                }
 
-                // 使用setTimeout确保浏览器在添加启动动画的类之前应用CSS变量
-                setTimeout(() => {
-                    // 开始打字动画
-                    typewriterElement.textContent = currentText;
-                    typewriterElement.classList.add('typing-animation');
-                }, 10);
-
-                // 打字完成后暂停
-                setTimeout(() => {
-                    // 暂停后开始删除动画
-                    setTimeout(() => {
-                        typewriterElement.classList.remove('typing-animation');
-                        typewriterElement.classList.add('deleting-animation');
-
-                        // 删除完成后切换到下一个文本
-                        setTimeout(() => {
-                            textIndex = (textIndex + 1) % texts.length;
-                            animate();
-                        }, deletingDuration);
-
-                    }, pauseDuration);
-
-                }, typingDuration);
+                setTimeout(type, timeoutSpeed);
             }
-
-            animate();
-
-            // 清理函数
-            return () => {
-                document.body.removeChild(measureElement);
-            };
+            type();
         }
 
+        // Snowflake effect
+        (function() {
+            const img = document.querySelector('.contact-img');
+            const container = img?.closest('.contact-image');
+            if (!img || !container) return;
+            let intervalId = null;
+            let mouseX = null;
+            let mouseY = null;
+
+            function createSnowflake() {
+                if (mouseX === null || mouseY === null) return;
+                const snow = document.createElement('span');
+                snow.className = 'snowflake';
+                snow.textContent = '❄';
+                const rect = container.getBoundingClientRect();
+                snow.style.left = (mouseX - rect.left) + 'px';
+                snow.style.top  = (mouseY - rect.top)  + 'px';
+                const size = Math.random() * 20 + 20;
+                snow.style.fontSize = size + 'px';
+                container.appendChild(snow);
+                setTimeout(() => snow.remove(), 7000);
+            }
+
+            img.addEventListener('mousemove', (e) => {
+                 mouseX = e.clientX;
+                 mouseY = e.clientY;
+             });
+             img.addEventListener('mouseenter', () => {
+                 if (intervalId) return;
+                 intervalId = setInterval(createSnowflake, 1000);
+             });
+             img.addEventListener('mouseleave', () => {
+                 clearInterval(intervalId);
+                 intervalId = null;
+                 mouseX = mouseY = null;
+             });
+        })();
     </script>
 </body>
 </html>
