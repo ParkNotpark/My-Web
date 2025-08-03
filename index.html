@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xiaoyue Yu - Portfolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Local fallback fonts instead of Google Fonts -->
+    <style>
+        @font-face {
+            font-family: 'Lora';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Lora Regular'), local('Lora-Regular'), local('Times New Roman');
+        }
+        @font-face {
+            font-family: 'Lora';
+            font-style: normal;
+            font-weight: 500;
+            src: local('Lora Medium'), local('Lora-Medium'), local('Times New Roman');
+        }
+        @font-face {
+            font-family: 'Lora';
+            font-style: normal;
+            font-weight: 600;
+            src: local('Lora SemiBold'), local('Lora-SemiBold'), local('Times New Roman Bold');
+        }
+        @font-face {
+            font-family: 'Lora';
+            font-style: normal;
+            font-weight: 700;
+            src: local('Lora Bold'), local('Lora-Bold'), local('Times New Roman Bold');
+        }
+        @font-face {
+            font-family: 'Nunito Sans';
+            font-style: normal;
+            font-weight: 300;
+            src: local('Nunito Sans Light'), local('NunitoSans-Light'), local('Arial');
+        }
+        @font-face {
+            font-family: 'Nunito Sans';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Nunito Sans Regular'), local('NunitoSans-Regular'), local('Arial');
+        }
+        @font-face {
+            font-family: 'Nunito Sans';
+            font-style: normal;
+            font-weight: 600;
+            src: local('Nunito Sans SemiBold'), local('NunitoSans-SemiBold'), local('Arial Bold');
+        }
+        @font-face {
+            font-family: 'Nunito Sans';
+            font-style: normal;
+            font-weight: 700;
+            src: local('Nunito Sans Bold'), local('NunitoSans-Bold'), local('Arial Bold');
+        }
+    </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Smooth transition effect for sections */
+        section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #FFFFFF;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Lora', serif;
+            margin-bottom: 1rem;
+            color: #333333;
+        }
+
+        a {
+            color: #B0E0E6;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #87CEEB;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            font-size: 2.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: #B0E0E6;
+            margin: 0.5rem auto;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-family: 'Lora', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: #333333;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #B0E0E6;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #333333;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* Home Section */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            padding: 0;
+            position: relative;
+        }
+        
+        /* Typewriter Effect */
+        .typewriter-text {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+        
+        .typewriter-text::after {
+            content: '';
+            position: absolute;
+            right: 0; /* Adjusted for better alignment */
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: #B0E0E6;
+            animation: blink-caret 0.75s step-end infinite;
+        }
+        
+        .typewriter-text.typing-animation {
+            animation: typing-animation var(--typing-duration) steps(var(--steps), end) forwards;
+        }
+        
+        .typewriter-text.deleting-animation {
+            animation: deleting-animation var(--deleting-duration) steps(var(--steps), end) forwards;
+        }
+        
+        @keyframes typing-animation {
+            from { width: 0 }
+            to { width: var(--text-width) }
+        }
+        
+        @keyframes deleting-animation {
+            from { width: var(--text-width) }
+            to { width: 0 }
+        }
+        
+        /* --- THIS IS THE FIX --- */
+        /* Changed 'border-color' to 'background-color' to make the cursor blink */
+        @keyframes blink-caret {
+            from, to { background-color: transparent; }
+            50% { background-color: #B0E0E6; }
+        }
+        
+        .avatar-container {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .avatar {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: 40% top;
+            border: 3px solid #B0E0E6;
+        }
+        
+        .profile-img {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        .home-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 50px 0;
+            width: 100%;
+            min-height: 50vh;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .home-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .name {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            min-height: 2.5em; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            color: #333333;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #B0E0E6;
+        }
+
+        /* Research Section */
+        .publication {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            transition: transform 0.3s ease;
+        }
+
+        .publication:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .publication-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-authors {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-venue {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .publication-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .publication-links a {
+            padding: 0.3rem 0.8rem;
+            background-color: #B0E0E6;
+            color: #333333;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .publication-links a:hover {
+            background-color: #87CEEB;
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: #B0E0E6;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #FFFFFF;
+            border: 4px solid #B0E0E6;
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 1.5rem;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-date {
+            color: #B0E0E6;
+            font-weight: 600;
+        }
+
+        .timeline-title {
+            margin: 0.5rem 0;
+        }
+
+        .timeline-description {
+            color: #666;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tech {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-links a {
+            padding: 0.5rem 1rem;
+            background-color: #B0E0E6;
+            color: #333333;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .project-links a:hover {
+            background-color: #87CEEB;
+        }
+
+        /* Blog Section */
+        .blog-content {
+            margin-top: 30px;
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .blog-content p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 4px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #FFFFFF;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-text {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-email {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #B0E0E6;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .navbar-container {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                position: absolute;
+                right: 0;
+                top: 70px;
+                background-color: rgba(255, 255, 255, 0.95);
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                transform: translateX(0);
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active div:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .hamburger.active div:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active div:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            .profile-img {
+                height: 100vh;
+            }
+            
+            .home-content {
+                padding: 30px 0;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(odd) {
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item:nth-child(odd)::after,
+            .timeline-item:nth-child(even)::after {
+                left: 21px;
+            }
+
+            .projects-grid,
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .profile-img {
+                height: 100vh;
+                width: 100%;
+            }
+
+            .name {
+                font-size: 2rem;
+            }
+            
+            .home-content {
+                padding: 20px 0;
+            }
+
+            .projects-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">Xiaoyue Yu</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="profile-img">
+            <img src="photo_index.jpg" alt="Profile Photo">
+        </div>
+        <div class="home-content" id="home-content">
+            <div class="container">
+                <div class="avatar-container">
+                    <img src="photo_me.jpg" alt="Xiaoyue Yu" class="avatar">
+                </div>
+                <h1 class="name">Xiaoyue Yu</h1>
+                <div class="title">
+                    <span class="typewriter-text" id="typewriter"></span>
+                </div>
+
+                <div class="social-links" style="justify-content: center; margin-top: 1.5rem;">
+                    <a href="mailto:XIY249@pitt.edu" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="#" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research">
+        <div class="container">
+            <h2 class="section-title">Research & Publications</h2>
+            <div class="publications-list">
+                <div class="publication">
+                    <h3 class="publication-title">Drivers' Intervention Tendency and Trust Dynamics During Interactions with Automated Vehicles in Potential Hazard Scenarios</h3>
+                    <p class="publication-authors">Wu, Y., Huang, D., <strong>Yu, X.</strong>, Wang, Y., Qin, W., Tan, X. (2025)</p>
+                    <p class="publication-venue">HCI International 2025 Posters. HCII 2025. Communications in Computer and Information Science, vol 2525. Springer, Cham, 2025</p>
+                    <p class="publication-abstract">This research examines how drivers interact with and trust automated vehicles during potentially hazardous driving scenarios, providing insights into human-automation interaction patterns.</p>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1007/978-3-031-94159-7_44" title="DOI" target="_blank">View Paper</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <p class="timeline-date">Fall 2023 - Present</p>
+                        <h3 class="timeline-title">Undergraduate Student, Sichuan University</h3>
+                        <p class="timeline-description">Studying industrial engineering with a focus on optimization, systems analysis, and human factors engineering.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <p class="timeline-date">Fall 2025 (Upcoming)</p>
+                        <h3 class="timeline-title">Future Undergraduate Student, University of Pittsburgh</h3>
+                        <p class="timeline-description">Will be pursuing studies in information science, focusing on information systems, data analysis, and human-computer interaction.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="blog-content">
+                <p>Coming soon...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog">
+        <div class="container">
+            <h2 class="section-title">Blog</h2>
+            <div class="blog-content">
+                <p>Coming soon...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img src="" alt="Lightbox Image" class="lightbox-img">
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-content">
+                <p class="contact-text">
+                    Feel free to reach out for collaborations or just to chat. I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+                </p>
+                <p class="contact-email">XIY249@pitt.edu</p>
+                <p class="contact-email">yuxiaoyue@stu.scu.edu.cn</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Xiaoyue Yu. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Navigation and Scroll
+        const navbar = document.querySelector('.navbar');
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const hamburger = document.querySelector('.hamburger');
+        const navLinksContainer = document.querySelector('.nav-links');
+        const sections = document.querySelectorAll('section');
+        const homeContent = document.getElementById('home-content');
+
+        // Hamburger menu toggle
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinksContainer.classList.toggle('active');
+        });
+
+        // Close mobile menu when a link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinksContainer.classList.remove('active');
+            });
+        });
+
+        // Function to check if element is in viewport
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.75 &&
+                rect.bottom >= 0
+            );
+        }
+
+        // Function to handle scroll effects
+        function handleScrollEffects() {
+            // Add shadow to navbar on scroll
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+
+            // Highlight active section in navbar
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+                
+                if (isInViewport(section)) {
+                    section.classList.add('visible');
+                }
+            });
+
+            if (homeContent && window.scrollY > 100) {
+                homeContent.classList.add('visible');
+            }
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Active link and section visibility on scroll
+        window.addEventListener('scroll', handleScrollEffects);
+        
+        // Initialize sections visibility on page load
+        window.addEventListener('load', () => {
+            const homeSection = document.getElementById('home');
+            if (homeSection) {
+                homeSection.classList.add('visible');
+            }
+            handleScrollEffects();
+            
+            setTimeout(() => {
+                typewriterCycle();
+            }, 500);
+        });
+
+        // =================================================================
+        // NEW AND IMPROVED TYPEWRITER ANIMATION FUNCTION (CORRECTED)
+        // =================================================================
+        function typewriterCycle() {
+            const typewriterElement = document.getElementById('typewriter');
+            if (!typewriterElement) return;
+
+            const texts = [
+                "SCUPIAN, IE person.",
+                "Comming to Pitt for INFSCI.",
+                "A cat lover.",
+                "Also a dog lover.",
+                "My spirit animal is a Beagle.",
+                " My actual pet is still loading..."
+            ];
+            let textIndex = 0;
+
+            // 调整打字速度，使其更均匀
+            const typingSpeedMs = 80; // 减慢打字速度
+            const deletingSpeedMs = 50; // 减慢删除速度
+            const pauseDuration = 2000;
+
+            // 创建一个临时元素来测量文本宽度
+            const measureElement = document.createElement('span');
+            measureElement.style.visibility = 'hidden';
+            measureElement.style.position = 'absolute';
+            measureElement.style.whiteSpace = 'nowrap';
+            measureElement.style.font = window.getComputedStyle(typewriterElement).font;
+            document.body.appendChild(measureElement);
+
+            function animate() {
+                const currentText = texts[textIndex];
+                const textLength = currentText.length;
+
+                // 计算实际文本宽度
+                measureElement.textContent = currentText;
+                const textWidth = measureElement.offsetWidth;
+
+                // 计算动画持续时间
+                const typingDuration = textLength * typingSpeedMs;
+                const deletingDuration = textLength * deletingSpeedMs;
+
+                // 设置初始内容为空
+                typewriterElement.textContent = '';
+                
+                // 设置CSS变量
+                typewriterElement.style.setProperty('--steps', textLength);
+                typewriterElement.style.setProperty('--text-width', `${textWidth}px`);
+                typewriterElement.style.setProperty('--typing-duration', `${typingDuration}ms`);
+                typewriterElement.style.setProperty('--deleting-duration', `${deletingDuration}ms`);
+                
+                // 清除之前的动画类以确保干净的开始
+                typewriterElement.classList.remove('deleting-animation', 'typing-animation');
+
+                // 使用setTimeout确保浏览器在添加启动动画的类之前应用CSS变量
+                setTimeout(() => {
+                    // 开始打字动画
+                    typewriterElement.textContent = currentText;
+                    typewriterElement.classList.add('typing-animation');
+                }, 10);
+
+                // 打字完成后暂停
+                setTimeout(() => {
+                    // 暂停后开始删除动画
+                    setTimeout(() => {
+                        typewriterElement.classList.remove('typing-animation');
+                        typewriterElement.classList.add('deleting-animation');
+
+                        // 删除完成后切换到下一个文本
+                        setTimeout(() => {
+                            textIndex = (textIndex + 1) % texts.length;
+                            animate();
+                        }, deletingDuration);
+
+                    }, pauseDuration);
+
+                }, typingDuration);
+            }
+
+            animate();
+
+            // 清理函数
+            return () => {
+                document.body.removeChild(measureElement);
+            };
+        }
+
+    </script>
+</body>
+</html>
