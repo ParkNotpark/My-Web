@@ -331,7 +331,7 @@
             -moz-perspective: 1000px;
             -ms-perspective: 1000px;
             -o-perspective: 1000px;
-            touch-action: none;
+            touch-action: auto; 
         }
         
         .typewriter-overlay .title {
@@ -1453,31 +1453,15 @@
         if (isMobileDevice) {
             window.addEventListener('touchstart', (e) => {
                 touchStartY = e.touches[0].clientY;
-                isTouching = true;
             });
             
             window.addEventListener('touchmove', (e) => {
-                if (!isTouching) return;
-                
-                const touchCurrentY = e.touches[0].clientY;
-                const touchDiff = Math.abs(touchCurrentY - touchStartY);
-                
-                if (touchDiff > 10) {
-                    if (typewriterRAFId) {
-                        cancelAnimationFrame(typewriterRAFId);
-                        typewriterRAFId = null;
-                    }
-                }
             });
             
             window.addEventListener('touchend', () => {
-                isTouching = false;
-                restartTypewriter();
             });
             
             window.addEventListener('touchcancel', () => {
-                isTouching = false;
-                restartTypewriter();
             });
         }
         
@@ -1549,8 +1533,8 @@
             const pauseDuration = 2000;
 
             function animate(timestamp) {
-                if (!document.getElementById('typewriter') || isTouching) {
-                    typewriterRAFId = null; // Clear RAF ID if element is gone or touching to stop animation
+                if (!document.getElementById('typewriter')) {
+                    typewriterRAFId = null; // Clear RAF ID if element is gone
                     return;
                 }
                 
