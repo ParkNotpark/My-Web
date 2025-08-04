@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xiaoyue Yu</title>
-    <!-- Font Awesome for icons -->
+    <link rel="icon" href="photo_me.jpg">
+    <link rel="apple-touch-icon" href="photo_me.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Local fallback fonts and all styles -->
     <style>
         @font-face {
             font-family: 'Lora';
@@ -64,7 +64,6 @@
             box-sizing: border-box;
         }
         
-        /* Add fade-in and float-up animation effect */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -95,8 +94,6 @@
             padding: 0;
         }
 
-        /* Remove global section animation to avoid background suddenly floating up */
-
         body {
             font-family: 'Nunito Sans', sans-serif;
             line-height: 1.6;
@@ -111,7 +108,6 @@
             padding: 0;
         }
         
-        /* Fixed cover background layer */
         .cover-background {
             position: fixed;
             top: 0;
@@ -122,18 +118,16 @@
             pointer-events: none;
         }
         
-        /* Scrollable content container */
         .scrollable-content {
             position: relative;
             z-index: 3;
-            margin-top: 100vh; /* Initially below the viewport */
-            background-color: transparent; /* Remove white background to let the bottom layer image show through */
+            margin-top: 100vh;
+            background-color: transparent;
             min-height: 200vh;
-            margin-bottom: 0; /* Ensure no bottom margin */
-            flex: 1; /* Take up remaining space in flex layout */
+            margin-bottom: 0;
+            flex: 1;
         }
         
-        /* Alternating background colors */
         #home {
             background-color: transparent;
             position: relative;
@@ -147,7 +141,7 @@
         }
         
         #research, #projects, #contact {
-            background-color: #E6F2F5; /* Light blue background */
+            background-color: #E6F2F5;
             position: relative;
             z-index: 3;
         }
@@ -287,7 +281,6 @@
             border-radius: 50%;
             object-fit: cover;
             object-position: 40% top;
-            /* Remove blue border */
             border: none;
         }
         
@@ -299,10 +292,10 @@
             top: 0;
             left: 0;
             z-index: 1;
-            will-change: transform; /* Optimize performance */
-            transform: translateZ(0); /* Force GPU acceleration, prevent jitter when scrolling */
-            pointer-events: none; /* Prevent mouse events from affecting */
-            backface-visibility: hidden; /* Optimize rendering performance */
+            will-change: transform;
+            transform: translateZ(0);
+            pointer-events: none;
+            backface-visibility: hidden;
         }
         
         .profile-img img {
@@ -312,7 +305,6 @@
             object-position: center;
         }
         
-        /* Typewriter animation layer style - completely fixed, does not move with scrolling */
         .typewriter-overlay {
             position: fixed;
             top: 0;
@@ -325,14 +317,21 @@
             z-index: 2;
             padding: 0 2rem;
             padding-top: 20vh;
-            will-change: transform; /* Optimize performance */
-            transform: translateZ(0); /* Force GPU acceleration */
-            pointer-events: none; /* Prevent mouse events from affecting */
-            backface-visibility: hidden; /* Optimize rendering performance */
-        }
-        
-        .typewriter-overlay {
-            pointer-events: auto; /* Restore mouse events for the typewriter layer */
+            will-change: transform;
+            pointer-events: auto;
+            backface-visibility: hidden;
+            transform: translate3d(0,0,0);
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            -webkit-backface-visibility: hidden;
+            perspective: 1000px;
+            -webkit-perspective: 1000px;
+            -moz-perspective: 1000px;
+            -ms-perspective: 1000px;
+            -o-perspective: 1000px;
+            touch-action: none;
         }
         
         .typewriter-overlay .title {
@@ -356,15 +355,13 @@
             width: 100%;
             min-height: 100vh;
             position: relative;
-            background-color: rgba(255, 255, 255, 0.5); /* 50% transparent white background */
+            background-color: rgba(255, 255, 255, 0.5);
             border-top-left-radius: 30px;
             border-top-right-radius: 30px;
             box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px); /* Add background blur effect */
+            backdrop-filter: blur(10px);
         }
         
-
-
         .home-container {
             display: flex;
             align-items: center;
@@ -387,7 +384,7 @@
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
             text-align: center;
-            position: relative; /* Provide reference for bubble positioning */
+            position: relative;
         }
         
         .research-area {
@@ -399,17 +396,16 @@
             line-height: 1.4;
         }
         
-        /* Research direction bubble styles */
         .bubbles-container {
             position: relative;
             width: 100%;
-            height: 150px; /* Increase height to accommodate more bubbles */
-            margin-top: 10px; /* Adjust position to place bubbles below research field introduction */
+            height: 150px;
+            margin-top: 10px;
         }
         
         .bubble {
             position: absolute;
-            background-color: rgba(176, 224, 230, 0.8); /* Light blue, semi-transparent */
+            background-color: rgba(176, 224, 230, 0.8);
             color: #333;
             border-radius: 50%;
             display: flex;
@@ -426,51 +422,45 @@
             z-index: 5;
         }
         
-        /* HCI bubble - using pink tones */
         .bubble:nth-child(1) {
             width: 85px;
             height: 85px;
             top: -45px;
-            left: 280px; /* Placed to the right of the name */
+            left: 280px;
             animation-delay: 0s;
-            background-color: rgba(255, 182, 193, 0.8); /* Light pink */
+            background-color: rgba(255, 182, 193, 0.8);
             font-size: 1rem;
         }
         
-        /* Human Factor bubble - using light purple */
         .bubble:nth-child(2) {
             width: 105px;
             height: 105px;
             top: -65px;
-            left: 360px; /* Placed to the upper right of the name */
+            left: 360px;
             animation-delay: 0.5s;
-            background-color: rgba(216, 191, 216, 0.8); /* Light purple */
+            background-color: rgba(216, 191, 216, 0.8);
             font-size: 1rem;
         }
         
-        /* Automated Vehicles bubble - using light blue */
         .bubble:nth-child(3) {
             width: 105px;
             height: 105px;
             top: 20px;
-            left: 320px; /* Placed to the lower right of the name */
+            left: 320px;
             animation-delay: 1s;
-            background-color: rgba(173, 216, 230, 0.8); /* Light blue */
-            font-size: 0.9rem; /* Smaller font to accommodate longer text */
+            background-color: rgba(173, 216, 230, 0.8);
+            font-size: 0.9rem;
         }
         
-        /* Human centered Design bubble - using light green */
         .bubble:nth-child(4) {
             width: 110px;
             height: 110px;
             top: 10px;
-            left: 420px; /* Placed at the rightmost position */
+            left: 420px;
             animation-delay: 1.5s;
-            background-color: rgba(144, 238, 144, 0.8); /* Light green */
-            font-size: 0.9rem; /* Smaller font to accommodate longer text */
+            background-color: rgba(144, 238, 144, 0.8);
+            font-size: 0.9rem;
         }
-        
-        /* This has already been replaced by the new styles above */
         
         @keyframes float {
             0% {
@@ -498,16 +488,23 @@
         
         .typewriter-text {
             position: relative;
-            white-space: nowrap; /* Default no line break */
+            white-space: nowrap;
             min-height: 1em;
             line-height: 1.5em;
             display: inline-block;
             font-family: "Fira Code", "Consolas", "Courier New", monospace;
-            max-width: 100%; /* Limit maximum width */
-            overflow: hidden; /* Hide overflow content */
+            max-width: 100%;
+            overflow: hidden;
+            transform: translate3d(0,0,0);
+            -webkit-transform: translate3d(0,0,0);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            -ms-backface-visibility: hidden;
+            -o-backface-visibility: hidden;
+            will-change: transform;
         }
         
-        /* Enable line breaks on small screens */
         @media screen and (max-width: 768px) {
             .typewriter-text {
                 white-space: normal;
@@ -526,6 +523,22 @@
             animation: blink-caret 1s step-end infinite;
             position: relative;
             top: 0;
+            transform: translate3d(0,0,0);
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            -ms-backface-visibility: hidden;
+            -o-backface-visibility: hidden;
+            perspective: 1000px;
+            -webkit-perspective: 1000px;
+            -moz-perspective: 1000px;
+            -ms-perspective: 1000px;
+            -o-perspective: 1000px;
+            will-change: opacity;
         }
 
         @keyframes blink-caret {
@@ -597,7 +610,6 @@
         }
 
         /* Experience Section */
-        /* Experience Container for Desktop Layout */
         .experience-container {
             display: flex;
             justify-content: space-between;
@@ -610,7 +622,6 @@
             min-width: 300px;
         }
         
-        /* Subsection Title Styles */
         .subsection-title {
             text-align: left;
             font-size: 1.8rem;
@@ -692,7 +703,7 @@
         }
 
         .timeline-date {
-            color: #4682B4; /* Changed to steel blue for a deeper color */
+            color: #4682B4;
             font-weight: 600;
         }
 
@@ -794,11 +805,11 @@
             font-style: italic;
         }
 
-        /* Contact Section - Creative Integration */
+        /* Contact Section */
         .contact-image-container {
             position: relative;
             width: 100%;
-            min-height: 100vh; /* Restore original height */
+            min-height: 100vh;
             overflow: hidden;
         }
         
@@ -807,15 +818,15 @@
             top: 50%;
             right: 5%;
             transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.7); /* Reduced opacity to make background image more visible */
+            background-color: rgba(255, 255, 255, 0.7);
             border-radius: 15px;
             padding: 2rem;
             width: 40%;
             max-width: 500px;
             box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(3px); /* Reduced blur effect */
+            backdrop-filter: blur(3px);
             z-index: 5;
-            text-align: left; /* Left-aligned text */
+            text-align: left;
         }
         
         .contact-title {
@@ -850,7 +861,7 @@
         .contact-email {
             font-size: 1.2rem;
             font-weight: 600;
-            color: #4682B4; /* Deeper blue, more readable on white background */
+            color: #4682B4;
             margin: 0.5rem 0;
             transition: color 0.3s ease;
         }
@@ -862,20 +873,19 @@
         .contact-img {
             width: 100%;
             height: 100%;
-            min-height: 100vh; /* Restore original height */
+            min-height: 100vh;
             object-fit: cover;
             display: block;
             position: absolute;
             top: 0;
             left: 0;
             z-index: 1;
-            filter: brightness(1.1) contrast(1.1); /* Increase brightness and contrast to make the image stand out */
+            filter: brightness(1.1) contrast(1.1);
         }
         
-        /* Responsive design: ensure correct display on different screen sizes */
         @media (max-width: 768px) {
             .contact-image-container {
-                min-height: 100vh; /* Maintain original height */
+                min-height: 100vh;
             }
             
             .contact-img {
@@ -891,7 +901,7 @@
         
         @media (max-width: 480px) {
             .contact-image-container {
-                min-height: 100vh; /* Maintain original height */
+                min-height: 100vh;
             }
             
             .contact-img {
@@ -903,7 +913,7 @@
                 padding: 1rem;
                 top: 50%;
                 right: 50%;
-                transform: translate(50%, -50%); /* Center display on small screens */
+                transform: translate(50%, -50%);
             }
             
             .contact-text {
@@ -922,8 +932,8 @@
             opacity: 0.9;
             animation: fall 5s linear forwards, melt 2s linear 5s forwards;
             pointer-events: none;
-            z-index: 2; /* Ensure snowflakes are above the image but below the content */
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add shadow to make snowflakes more visible */
+            z-index: 2;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         }
 
         @keyframes fall {
@@ -936,7 +946,6 @@
             to { opacity: 0; }
         }
         
-        /* Add some snowflake variants to enrich the effect */
         .snowflake.small {
             font-size: 10px;
             animation-duration: 7s;
@@ -961,8 +970,6 @@
             font-size: 0.9rem;
         }
         
-        /* Copyright information style has been removed */
-
         /* Back to Top Button */
         .back-to-top {
             position: fixed;
@@ -995,49 +1002,40 @@
                 padding: 1rem;
             }
             
-            /* Bubble styles on mobile devices */
             .bubbles-container {
-                height: 170px; /* Increase height to accommodate more bubbles */
+                height: 170px;
                 margin-top: 10px;
                 width: 320px;
             }
             
-            /* HCI bubble on mobile devices */
             .bubble:nth-child(1) {
                 width: 75px;
                 height: 75px;
-                top: 20px; /* Move down */
+                top: 20px;
                 left: 40px;
-                /* Keep pink background */
             }
             
-            /* Human Factor bubble on mobile devices */
             .bubble:nth-child(2) {
                 width: 95px;
                 height: 95px;
-                top: 0px; /* Move down */
+                top: 0px;
                 left: 120px;
-                /* Keep light purple background */
             }
             
-            /* 移动设备上的Automated Vehicles泡泡 */
             .bubble:nth-child(3) {
                 width: 95px;
                 height: 95px;
-                top: 60px; /* Move down */
+                top: 60px;
                 left: 60px;
-                /* Keep light blue background */
-                font-size: 0.8rem; /* Smaller font, adapt to long text */
+                font-size: 0.8rem;
             }
             
-            /* Human centered Design bubble on mobile devices */
             .bubble:nth-child(4) {
                 width: 90px;
                 height: 90px;
-                top: 50px; /* Move down */
+                top: 50px;
                 left: 160px;
-                /* Keep light green background */       
-                font-size: 0.8rem; /* Smaller font, adapt to long text */
+                font-size: 0.8rem;
             }
 
             .nav-links {
@@ -1104,7 +1102,6 @@
                 padding: 0 15px;
             }
 
-            /* Experience section styles on mobile devices */
             .experience-container {
                 flex-direction: column;
             }
@@ -1173,7 +1170,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="navbar-container">
             <div class="logo">Xiaoyue Yu</div>
@@ -1193,26 +1189,19 @@
         </div>
     </nav>
 
-    <!-- Fixed cover background layer -->
     <div class="cover-background">
-        <!-- Underlying image -->
         <div class="profile-img">
             <img src="photo_index.jpg" alt="Profile Photo">
         </div>
         
-        <!-- Typewriter animation layer -->
         <div class="typewriter-overlay">
             <div class="title">
                 <span class="typewriter-text" id="typewriter"></span>
             </div>
-            
-
         </div>
     </div>
     
-    <!-- Scrollable content container -->
     <div class="scrollable-content">
-        <!-- Home Section -->
         <section id="home">
             <div class="home-content" id="home-content">
                 <div class="container home-container">
@@ -1241,12 +1230,10 @@
             </div>
         </section>
 
-    <!-- Research Section -->
     <section id="research">
         <div class="container">
             <h2 class="section-title">Research & Publications</h2>
             <div class="publications-list fade-in-section">
-                <!-- ADDED: The publication is now in the correct section and at the top. -->
                 <div class="publication">
                     <h3 class="publication-title">Blood Biomarker-Based Machine Learning Triaging Model for Predicting the Risk of Cognitive Decline Progression from Mild Cognitive Impairment</h3>
                     <p class="publication-authors">Yin, J., <strong>Yu, X.</strong>, Pan, J., Qian, G. (2025)</p>
@@ -1270,14 +1257,11 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
     <section id="experience">
         <div class="container">
             <h2 class="section-title">Experience</h2>
             
-            <!-- Experience Sections Container for Desktop Layout -->
             <div class="experience-container">
-                <!-- Education Subsection -->
                 <div class="experience-section">
                     <h3 class="subsection-title">Education</h3>
                     <div class="timeline fade-in-section">
@@ -1298,7 +1282,6 @@
                     </div>
                 </div>
                 
-                <!-- Laboratories Subsection -->
                 <div class="experience-section">
                     <h3 class="subsection-title">Laboratories</h3>
                     <div class="timeline fade-in-section">
@@ -1324,7 +1307,6 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects">
         <div class="container">
             <h2 class="section-title">Portfolio</h2>
@@ -1334,7 +1316,6 @@
         </div>
     </section>
 
-    <!-- Blog Section -->
     <section id="blog">
         <div class="container">
             <h2 class="section-title">Blog</h2>
@@ -1354,12 +1335,10 @@
         </div>
     </section>
 
-    <!-- Contact Section with Integrated Image and Snowflake Effect -->
     <section id="contact">
         <div class="contact-image-container">
             <img src="photo_contact.JPG" alt="Contact photo" class="contact-img">
             
-            <!-- Centered Content Box -->
             <div class="contact-content-overlay">
                 <h2 class="section-title contact-title">Contact</h2>
                 <div class="contact-content fade-in-section">
@@ -1370,37 +1349,28 @@
                     <p class="contact-email">yuxiaoyue@stu.scu.edu.cn</p>
                 </div>
             </div>
-            
-        
         </div>
     </section>
     
-    </div> <!-- Close scrollable-content -->
+    </div>
     
-    <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop" title="Back to Top"><i class="fas fa-chevron-up"></i></button>
     
-    <!-- Copyright Information -->
     <div style="position: fixed; bottom: 10px; width: 100%; text-align: center; font-size: 12px; color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.7); z-index: 1001;">&copy; 2025 Xiaoyue Yu. All Rights Reserved.</div>
 
-    <!-- JavaScript -->
     <script>
-        // Navigation and Scroll
         const navbar = document.querySelector('.navbar');
         const navLinks = document.querySelectorAll('.nav-links a');
         const hamburger = document.querySelector('.hamburger');
         const navLinksContainer = document.querySelector('.nav-links');
         const sections = document.querySelectorAll('section');
-        const homeContent = document.getElementById('home-content');
         const backToTopBtn = document.getElementById('backToTop');
 
-        // Hamburger menu toggle
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navLinksContainer.classList.toggle('active');
         });
 
-        // Close mobile menu when a link is clicked
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
@@ -1408,35 +1378,19 @@
             });
         });
 
-        // Function to check if element is in viewport
-        function isInViewport(element) {
-            const rect = element.getBoundingClientRect();
-            return (
-                rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.75 &&
-                rect.bottom >= 0
-            );
-        }
-
-        // Function to handle scroll effects
         function handleScrollEffects() {
-            // Navbar shadow
             if (window.scrollY > 50) {
                 navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
             } else {
                 navbar.style.boxShadow = 'none';
             }
 
-            // Back to top button visibility
             if (window.scrollY > 300) {
                 if (backToTopBtn) backToTopBtn.style.display = 'flex';
             } else {
                 if (backToTopBtn) backToTopBtn.style.display = 'none';
             }
             
-            // Bottom layer content (image and typewriter) remains completely fixed, no JavaScript operation needed
-            // home-content will naturally move up with page scrolling to cover the bottom layer content
-            
-            // Detect and trigger fade-in and float-up animations
             const fadeElements = document.querySelectorAll('.fade-in-section');
             fadeElements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
@@ -1444,14 +1398,12 @@
                 const isVisible = (elementTop < window.innerHeight * 0.8) && (elementBottom > 0);
                 
                 if (isVisible) {
-                    // Only add class when scrolling to visible area for the first time, avoid triggering animation repeatedly
                     if (!element.classList.contains('is-visible')) {
                         element.classList.add('is-visible');
                     }
                 }
             });
             
-            // Nav link highlighting
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
@@ -1460,7 +1412,6 @@
                 }
             });
 
-            // Update active nav link
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href').substring(1) === current) {
@@ -1469,49 +1420,116 @@
             });
         }
         
-        // Event Listeners
         window.addEventListener('scroll', handleScrollEffects);
         
-        // Add window resize listener to reinitialize typewriter animation
-        let typewriterTimeout;
-        window.addEventListener('resize', () => {
-            // Debounce processing to avoid frequent reinitialization
-            clearTimeout(typewriterTimeout);
-            typewriterTimeout = setTimeout(() => {
-                // Clear existing typewriter element content
+        let typewriterRAFId = null;
+        let restartDebounceTimer = null;
+        
+        function debounce(func, wait) {
+            return function() {
+                const context = this;
+                const args = arguments;
+                clearTimeout(restartDebounceTimer);
+                restartDebounceTimer = setTimeout(() => {
+                    func.apply(context, args);
+                }, wait);
+            };
+        }
+        
+        const restartTypewriter = debounce(() => {
+            if (!typewriterRAFId) {
                 const typewriterElement = document.getElementById('typewriter');
                 if (typewriterElement) {
                     typewriterElement.textContent = '';
-                    // Reinitialize typewriter animation
                     typewriterCycle();
                 }
-            }, 300);
-        });
+            }
+        }, 150);
+        
+        const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        let isTouching = false;
+        let touchStartY = 0;
+
+        if (isMobileDevice) {
+            window.addEventListener('touchstart', (e) => {
+                touchStartY = e.touches[0].clientY;
+                isTouching = true;
+            });
+            
+            window.addEventListener('touchmove', (e) => {
+                if (!isTouching) return;
+                
+                const touchCurrentY = e.touches[0].clientY;
+                const touchDiff = Math.abs(touchCurrentY - touchStartY);
+                
+                if (touchDiff > 10) {
+                    if (typewriterRAFId) {
+                        cancelAnimationFrame(typewriterRAFId);
+                        typewriterRAFId = null;
+                    }
+                }
+            });
+            
+            window.addEventListener('touchend', () => {
+                isTouching = false;
+                restartTypewriter();
+            });
+            
+            window.addEventListener('touchcancel', () => {
+                isTouching = false;
+                restartTypewriter();
+            });
+        }
         
         window.addEventListener('load', () => {
             handleScrollEffects();
-            setTimeout(typewriterCycle, 500);
             
-            // Check element visibility again after page loading is complete to ensure initially visible elements are displayed correctly
-            window.addEventListener('load', function() {
-                // Call handleScrollEffects again to check element visibility
+            setTimeout(() => {
+                if (typewriterRAFId) {
+                    cancelAnimationFrame(typewriterRAFId);
+                    typewriterRAFId = null;
+                }
+                restartTypewriter();
+            }, 500);
+            
+            setTimeout(() => {
                 handleScrollEffects();
-            });
+            }, 100);
         });
+        
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'visible') {
+                if (typewriterRAFId) {
+                    cancelAnimationFrame(typewriterRAFId);
+                    typewriterRAFId = null;
+                }
+                restartTypewriter();
+            }
+        });
+        
+        window.addEventListener('resize', debounce(() => {
+            if (typewriterRAFId) {
+                cancelAnimationFrame(typewriterRAFId);
+                typewriterRAFId = null;
+            }
+            restartTypewriter();
+        }, 250));
 
-        // Back to Top button click
         if (backToTopBtn) {
             backToTopBtn.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
 
-        // JavaScript-based Typewriter
         function typewriterCycle() {
             const typewriterElement = document.getElementById('typewriter');
             if (!typewriterElement) return;
 
-            // Use original text content, not adjusted based on screen size
+            if (typewriterRAFId) {
+                cancelAnimationFrame(typewriterRAFId);
+                typewriterRAFId = null;
+            }
+
             const texts = [
                 "SCUPIAN, IE person.",
                 "Coming to Pitt for INFSCI.",
@@ -1524,12 +1542,23 @@
             let textIndex = 0;
             let charIndex = 0;
             let isDeleting = false;
+            let nextUpdateTime = 0;
             
             const typingSpeed = 100;
             const deletingSpeed = 50;
             const pauseDuration = 2000;
 
-            function type() {
+            function animate(timestamp) {
+                if (!document.getElementById('typewriter') || isTouching) {
+                    typewriterRAFId = null; // Clear RAF ID if element is gone or touching to stop animation
+                    return;
+                }
+                
+                if (timestamp < nextUpdateTime) {
+                    typewriterRAFId = requestAnimationFrame(animate);
+                    return;
+                }
+                
                 const currentText = texts[textIndex];
                 let timeoutSpeed = typingSpeed;
 
@@ -1553,68 +1582,35 @@
                     }
                 }
 
-                setTimeout(type, timeoutSpeed);
+                nextUpdateTime = timestamp + timeoutSpeed;
+                typewriterRAFId = requestAnimationFrame(animate);
             }
-            type();
+            
+            typewriterRAFId = requestAnimationFrame(animate);
         }
 
-        // Enhanced snowflake effect
         (function() {
-            // Wait for DOM to fully load
             document.addEventListener('DOMContentLoaded', function() {
                 const container = document.querySelector('.contact-image-container');
                 if (!container) {
-                    console.error('Snowflake effect initialization failed: contact-image-container element not found');
                     return;
                 }
                 
-                console.log('Snowflake effect initialized successfully');
                 let intervalId = null;
-                let autoIntervalId = null;
                 let mouseX = null;
                 let mouseY = null;
                 
-                // Snowflake character variants
                 const snowflakeChars = ['❄', '❅', '❆', '✻', '✼', '❉', '❊', '✧', '✦'];
-                
-                // 检测是否为移动设备
                 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-                // Create random snowflake
-                function createRandomSnowflake() {
-                    const snow = document.createElement('span');
-                    
-                    // Randomly select snowflake type
-                    const sizeClass = Math.random() < 0.3 ? 'small' : 
-                                    Math.random() < 0.7 ? 'medium' : 'large';
-                    snow.className = `snowflake ${sizeClass}`;
-                    
-                    // Randomly select snowflake character
-                    snow.textContent = snowflakeChars[Math.floor(Math.random() * snowflakeChars.length)];
-                    
-                    // Random position
-                    const rect = container.getBoundingClientRect();
-                    snow.style.left = Math.random() * rect.width + 'px';
-                    snow.style.top = '0px';
-                    
-                    // Random opacity
-                    snow.style.opacity = 0.5 + Math.random() * 0.5;
-                    
-                    container.appendChild(snow);
-                    setTimeout(() => snow.remove(), 7000);
-                }
-                
-                // Create mouse-following snowflake
                 function createMouseSnowflake() {
                     if (mouseX === null || mouseY === null) return;
                     const snow = document.createElement('span');
                     
-                    // Randomly select snowflake type
                     const sizeClass = Math.random() < 0.3 ? 'small' : 
                                     Math.random() < 0.7 ? 'medium' : 'large';
                     snow.className = `snowflake ${sizeClass}`;
                     
-                    // Randomly select snowflake character
                     snow.textContent = snowflakeChars[Math.floor(Math.random() * snowflakeChars.length)];
                     
                     const rect = container.getBoundingClientRect();
@@ -1625,29 +1621,13 @@
                     setTimeout(() => snow.remove(), 7000);
                 }
                 
-                // Automatically generate snowflakes
-                function startAutoSnow() {
-                    if (autoIntervalId) return;
-                    autoIntervalId = setInterval(createRandomSnowflake, 1000);
-                }
-                
-                // Stop automatically generating snowflakes
-                function stopAutoSnow() {
-                    clearInterval(autoIntervalId);
-                    autoIntervalId = null;
-                }
-                
-                // No longer automatically start snowing, only generate snowflakes when mouse hovers or clicks
-                
                 if (isMobile) {
-                    // Mobile devices: tap to create snowflakes
                     container.addEventListener('touchstart', (e) => {
                         mouseX = e.touches[0].clientX;
                         mouseY = e.touches[0].clientY;
                         createMouseSnowflake();
                     });
                 } else {
-                    // Desktop devices: mouse movement creates snowflakes
                     container.addEventListener('mousemove', (e) => {
                         mouseX = e.clientX;
                         mouseY = e.clientY;
@@ -1655,7 +1635,7 @@
                     
                     container.addEventListener('mouseenter', () => {
                         if (intervalId) return;
-                        intervalId = setInterval(createMouseSnowflake, 400); // Slow down the rate of snowflake generation with mouse movement
+                        intervalId = setInterval(createMouseSnowflake, 400);
                     });
                     
                     container.addEventListener('mouseleave', () => {
