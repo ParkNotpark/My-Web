@@ -768,17 +768,25 @@
         
         .project-info {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 1rem;
             height: 34%;
+            text-align: center;
         }
 
         .project-title {
             font-size: 1.5rem;
-            margin-bottom: 0;
+            margin-bottom: 0.5rem;
             padding: 0;
             text-align: center;
+        }
+        
+        .project-date {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 0.5rem;
         }
         
         .project-description {
@@ -1320,17 +1328,39 @@
         <div class="container">
             <h2 class="section-title">Blog</h2>
             <div class="projects-grid fade-in-section">
-                <a href="blog-mount-siguniang.html" class="project-card-link">
+                <!-- 只显示三篇最新的博客 -->
+                <a href="blog-mount-qingcheng.html" class="project-card-link">
                     <div class="project-card">
-                        <img src="images/MountSiguniang_title.jpg" alt="Mount Siguniang" class="project-img">
+                        <img src="images/MountQingcheng_title.JPG" alt="Mount Qingcheng" class="project-img">
                         <div class="project-info">
-                            <h3 class="project-title">December 9, 2023 - Mount Siguniang</h3>
+                            <h3 class="project-title">Mount Qingcheng</h3>
+                            <p class="project-date">May 24, 2025</p>
                         </div>
                     </div>
                 </a>
-                <div class="project-card coming-soon">
-                    <img src="photo_index.jpg" alt="Coming Soon" class="project-img">
-                </div>
+                <a href="blog-japan.html" class="project-card-link">
+                    <div class="project-card">
+                        <img src="images/Japan_title.JPG" alt="Japan" class="project-img">
+                        <div class="project-info">
+                            <h3 class="project-title">Japan: Kyoto, Hokkaido</h3>
+                            <p class="project-date">January 12, 2025</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="blog-east-coast-usa.html" class="project-card-link">
+                    <div class="project-card">
+                        <img src="images/EastCostUSA_title.JPG" alt="East Coast USA" class="project-img">
+                        <div class="project-info">
+                            <h3 class="project-title">East Coast USA</h3>
+                            <p class="project-date">July 16, 2024</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="view-more-container" style="text-align: center; margin-top: 2rem;">
+                <a href="blogs.html" class="view-more-btn" style="display: inline-block; padding: 0.3rem 0.8rem; background-color: #B0E0E6; color: #333333; border-radius: 4px; font-size: 0.9rem; font-weight: 500; transition: background-color 0.3s;">
+                    View More Blogs
+                </a>
             </div>
         </div>
     </section>
