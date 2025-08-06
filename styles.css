@@ -125,7 +125,13 @@ body {
     z-index: 1;
 }
 
-#experience, #blog {
+#experience {
+    background-color: #FFFFFF;
+    position: relative;
+    z-index: 3;
+}
+
+#blog {
     background-color: #FFFFFF;
     position: relative;
     z-index: 3;
@@ -170,6 +176,8 @@ section {
     position: relative;
     font-size: 2.5rem;
 }
+
+
 
 .section-title::after {
     content: '';
@@ -686,6 +694,67 @@ section {
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
+.timeline-content-with-image {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    gap: 1.5rem;
+    align-items: center;
+}
+
+/* 四川大学布局 - 图片在文字上方，与edu2保持一致 */
+.edu1-layout {
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 匹兹堡大学布局 - 图片在专业文字上方 */
+.edu2-layout .timeline-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.timeline-item:nth-child(odd) .timeline-content-with-image {
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) .timeline-content-with-image {
+    text-align: left;
+}
+
+/* 不再需要特殊调整奇数项的edu1布局 */
+
+.timeline-content-with-image .timeline-text {
+    width: 100%;
+}
+
+.timeline-content-with-image .timeline-image {
+    max-width: 80%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: contain;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+}
+
+/* 四川大学图片 - 放大并放在文字上方 */
+.edu1-image {
+    max-width: 200px;
+    order: -1;
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+/* 匹兹堡大学图片 - 放大并放在文字上方 */
+.edu2-image {
+    max-width: 200px;
+    order: -1;
+    margin-bottom: 1rem;
+}
+
 .timeline-date {
     color: #4682B4;
     font-weight: 600;
@@ -697,6 +766,13 @@ section {
 
 .timeline-description {
     color: #666;
+}
+
+.timeline-description i {
+    color: #4682B4;
+    width: 20px;
+    margin-right: 8px;
+    text-align: center;
 }
 
 /* Projects Section */
